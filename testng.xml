@@ -1,0 +1,7 @@
+<suite name="Suite" parallel="tests" thread-count="2">
+    <test name="Test1">
+        <classes>
+            <class name="com.framework.tarun.tests.Test1"/>
+        </classes>
+    </test>
+</suite>

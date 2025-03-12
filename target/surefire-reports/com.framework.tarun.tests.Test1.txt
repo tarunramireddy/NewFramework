@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.framework.tarun.tests.Test1
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.337 s -- in com.framework.tarun.tests.Test1
