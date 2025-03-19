@@ -26,7 +26,7 @@ public class Test1 {
             throw new IllegalArgumentException("Browser value is missing in the configuration file.");
         }
 
-        driver = BrowserFactory.getDriver(browser); // Initialize WebDriver
+        driver = BrowserFactory.getDriver(browser);
         if (driver == null) {
             throw new IllegalArgumentException("Failed to initialize the driver for browser: " + browser);
         }
