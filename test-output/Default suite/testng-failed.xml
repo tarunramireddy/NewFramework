@@ -5,10 +5,9 @@
     <classes>
       <class name="com.framework.tarun.tests.Test1">
         <methods>
+          <include name="signUp"/>
           <include name="openBrowser"/>
-          <include name="testing2"/>
           <include name="quit"/>
-          <include name="testing1"/>
         </methods>
       </class> <!-- com.framework.tarun.tests.Test1 -->
     </classes>

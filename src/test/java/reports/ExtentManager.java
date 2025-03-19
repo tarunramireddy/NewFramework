@@ -1,8 +1,15 @@
 package reports;
 
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.*;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import org.apache.commons.io.FileUtils;
 
 public class ExtentManager {
     private static ExtentReports extent;
@@ -10,9 +17,8 @@ public class ExtentManager {
 
     public static ExtentReports getInstance() {
         if (extent == null) {
-            ExtentSparkReporter reporter = new ExtentSparkReporter("test-output/ExtentReport.html");
             extent = new ExtentReports();
-            extent.attachReporter(reporter);
+            extent.attachReporter(new ExtentSparkReporter("ExtentReport.html"));
         }
         return extent;
     }
@@ -21,6 +27,19 @@ public class ExtentManager {
         test = getInstance().createTest(testName);
         return test;
     }
+    
+    public static void logWithScreenshot(WebDriver driver, Status status, String message) {
+        try {
+            File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            String path = "screenshots/" + new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date()) + ".png";
+            File destFile = new File(path);
+            FileUtils.copyFile(srcFile, destFile);
+            test.log(status, message, MediaEntityBuilder.createScreenCaptureFromPath(path).build());
+        } catch (IOException e) {
+            test.log(status, message + " (Screenshot capture failed)");
+        }
+    }
+
 
     public static void flushReports() {
         if (extent != null) {
@@ -28,4 +47,3 @@ public class ExtentManager {
         }
     }
 }
-
