@@ -5,7 +5,7 @@
     <classes>
       <class name="com.framework.tarun.tests.Test1">
         <methods>
-          <include name="signUp"/>
+          <include name="testSignUp" invocation-numbers="2 3"/>
           <include name="openBrowser"/>
           <include name="quit"/>
         </methods>
